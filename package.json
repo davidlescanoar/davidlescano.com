@@ -4,7 +4,7 @@
   "private": true,
   "description": "Personal website of David Lescano, Full-Stack Software Engineer in Munich.",
   "engines": {
-    "node": ">=24"
+    "node": "24.x"
   },
   "scripts": {
     "predev": "node scripts/check-node.mjs",
