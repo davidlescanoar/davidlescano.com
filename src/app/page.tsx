@@ -18,7 +18,6 @@ function personJsonLd() {
     name: site.name,
     jobTitle: site.title,
     url: site.url,
-    image: `${site.url}/images/david-lescano.jpg`,
     ...(site.email ? { email: `mailto:${site.email}` } : {}),
     address: { "@type": "PostalAddress", addressLocality: "Munich", addressCountry: "DE" },
     knowsLanguage: site.languages.map((l) => l.name),

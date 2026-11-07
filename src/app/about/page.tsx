@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/config/site";
+import { Postcard } from "@/components/sections/AboutTeaser";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { pad2 } from "@/lib/utils";
-import portrait from "../../../public/images/david-lescano.jpg";
 
 export const metadata: Metadata = {
   title: "About",
@@ -102,19 +101,7 @@ export default function AboutPage() {
         </div>
 
         <aside className="space-y-10">
-          <figure className="mx-auto max-w-[360px] rotate-[1.5deg] rounded-[var(--radius-card)] border border-line bg-surface p-3 shadow-[var(--shadow-card)] transition-transform duration-500 hover:rotate-0">
-            <Image
-              src={portrait}
-              alt={`Portrait of ${site.name}`}
-              placeholder="blur"
-              priority
-              sizes="(min-width: 1024px) 336px, (min-width: 400px) 336px, 90vw"
-              className="h-auto w-full rounded-[calc(var(--radius-card)-6px)]"
-            />
-            <figcaption className="px-1 pt-3 pb-1 font-mono text-xs text-muted">
-              {site.name} · {site.location}
-            </figcaption>
-          </figure>
+          <Postcard />
           <dl className="space-y-5 rounded-[var(--radius-card)] border border-line bg-surface p-6 text-sm">
             <div>
               <dt className={label}>Based in</dt>
@@ -130,19 +117,6 @@ export default function AboutPage() {
                 <dd className="mt-1 font-medium">{site.availability}</dd>
               </div>
             ) : null}
-            <div>
-              <dt className={label}>Languages</dt>
-              <dd className="mt-1">
-                <ul className="space-y-1">
-                  {site.languages.map((l) => (
-                    <li key={l.name} className="flex justify-between gap-4">
-                      <span className="font-medium">{l.name}</span>
-                      <span className="text-muted">{l.level}</span>
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
           </dl>
         </aside>
       </Container>

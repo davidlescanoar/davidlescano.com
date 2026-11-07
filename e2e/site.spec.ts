@@ -54,7 +54,7 @@ test.describe("navigation", () => {
     await expect(page).toHaveURL(/#experience$/);
     await nav.getByRole("link", { name: "About" }).click();
     await expect(page).toHaveURL(/\/about$/);
-    await expect(page.getByRole("img", { name: /portrait of david lescano/i })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Munich");
   });
 
   test("mobile menu opens, traps focus and closes with Escape", async ({ page, isMobile }) => {
