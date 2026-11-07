@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Space_Grotesk } from "next/font/google";
@@ -66,8 +67,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <main id="main">{children}</main>
           <Footer />
         </ThemeProvider>
-        {/* Cookieless page-view counts; only reports on Vercel deployments. */}
+        {/* Cookieless page views and real-visitor Core Web Vitals; both only report on Vercel. */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

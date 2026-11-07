@@ -101,14 +101,15 @@ lime highlighter stroke under one phrase per section. The hero's one interactive
 
 - Strict security headers from `next.config.ts`: a Content Security Policy that only allows this origin, `nosniff`,
   `frame-ancestors 'none'`, a restrictive `Permissions-Policy`.
-- Vercel Web Analytics for page-view counts: cookieless, so no consent banner.
+- Vercel Web Analytics (page views) and Speed Insights (real-visitor Core Web Vitals): both cookieless, so no consent
+  banner.
 - The Impressum and privacy pages return 404 until reviewed texts are in place; then set `site.legal.impressumReady`
   and `site.legal.privacyReady` to `true` and the footer links appear. Not legal advice.
 
 ## Deploying to Vercel
 
 1. In Vercel, "Add New Project" and import this repository. Defaults work.
-2. In Project Settings → Analytics, enable Web Analytics.
+2. In the project, enable Analytics and Speed Insights (one click each).
 3. In Project Settings → Domains, add `davidlescano.com` and `www.davidlescano.com` and follow the DNS instructions.
 4. Every push to `main` deploys production; pull requests get preview URLs.
 

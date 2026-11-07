@@ -13,8 +13,9 @@ export const metadata: Metadata = {
  * LEGAL PLACEHOLDER — not legal advice and not reviewed.
  * The site sets no cookies and loads no third-party scripts. Fonts are
  * self-hosted by next/font. It uses Vercel Web Analytics (cookieless,
- * anonymised page views), and Vercel as host processes server logs; the
- * policy must cover both.
+ * anonymised page views) and Vercel Speed Insights (cookieless performance
+ * metrics), and Vercel as host processes server logs; the policy must
+ * cover all three.
  * Replace with a reviewed text, then set site.legal.privacyReady = true.
  */
 export default function DatenschutzPage() {
@@ -26,7 +27,10 @@ export default function DatenschutzPage() {
         <p>[PLACEHOLDER — needs review before publishing]</p>
         <p>1. Verantwortlicher: [Name, Anschrift, E-Mail]</p>
         <p>2. Hosting und Server-Logfiles: [Anbieter, Zweck, Rechtsgrundlage, Speicherdauer]</p>
-        <p>3. Reichweitenmessung mit Vercel Web Analytics (ohne Cookies): [Zweck, Rechtsgrundlage, Speicherdauer]</p>
+        <p>
+          3. Reichweitenmessung mit Vercel Web Analytics und Leistungsmessung mit Vercel Speed Insights (ohne Cookies):
+          [Zweck, Rechtsgrundlage, Speicherdauer]
+        </p>
         <p>4. Kontakt per E-Mail: [Zweck, Rechtsgrundlage, Speicherdauer]</p>
         <p>5. Ihre Rechte: [Auskunft, Berichtigung, Löschung, Beschwerde bei der Aufsichtsbehörde]</p>
       </div>
