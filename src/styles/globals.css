@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* Dark mode follows the `.dark` class set by next-themes. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* Design tokens                                                       */
+/* Change the palette here; every component reads these variables.     */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --bg: #f8f7f2;
+  --surface: #ffffff;
+  --surface-2: #f0efe7;
+  --text: #18241f;
+  --muted: #52665c;
+  --accent: #18634e;
+  --accent-ink: #ffffff;
+  --highlight: #c8f7ab;
+  --peach: #f4ad73;
+  /* Peach dark enough for text (4.5:1 on surface). */
+  --peach-ink: #9a4710;
+  --border: #dce4dc;
+  --grid: rgb(24 36 31 / 0.06);
+  --shadow: 0 1px 2px rgb(24 36 31 / 0.04), 0 12px 32px -16px rgb(24 36 31 / 0.18);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #111a17;
+  --surface: #1b2923;
+  --surface-2: #16221d;
+  --text: #f3f7f1;
+  --muted: #b6c6bc;
+  --accent: #9de3ba;
+  --accent-ink: #0e1a15;
+  --highlight: rgb(157 227 186 / 0.24);
+  --peach: #f4ad73;
+  --peach-ink: #f4ad73;
+  --border: #34483e;
+  --grid: rgb(243 247 241 / 0.05);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 16px 40px -20px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-highlight: var(--highlight);
+  --color-peach: var(--peach);
+  --color-peach-ink: var(--peach-ink);
+  --color-line: var(--border);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-display-face), var(--font-geist-sans), ui-sans-serif, sans-serif;
+
+  --radius-card: 18px;
+  --shadow-card: var(--shadow);
+  --ease-out-soft: var(--ease-out);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                                */
+/* ------------------------------------------------------------------ */
+
+html {
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color 240ms ease,
+    color 240ms ease;
+}
+
+::selection {
+  background: var(--highlight);
+  color: var(--text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Signature details                                                   */
+/* ------------------------------------------------------------------ */
+
+/* Highlighter stroke behind a phrase: the site's recurring mark. */
+.marker {
+  background-image: linear-gradient(var(--highlight), var(--highlight));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 0.42em;
+  padding-inline: 0.06em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marker-draw {
+    animation: marker-draw 900ms var(--ease-out) 350ms both;
+  }
+}
+
+@keyframes marker-draw {
+  from {
+    background-size: 0% 0.42em;
+  }
+  to {
+    background-size: 100% 0.42em;
+  }
+}
+
+/* Faint engineering grid used behind illustrations. */
+.blueprint {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Request packet travelling through the hero diagram. */
+@media (prefers-reduced-motion: no-preference) {
+  .packet {
+    animation: packet 5.2s var(--ease-out) infinite;
+  }
+}
+
+@keyframes packet {
+  0%,
+  8% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateY(var(--travel));
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(var(--travel));
+    opacity: 1;
+  }
+  88% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  92%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: currentColor;
+    animation: pulse 2.4s ease-out infinite;
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
