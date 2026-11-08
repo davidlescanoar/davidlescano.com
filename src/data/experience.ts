@@ -23,6 +23,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Full-Stack Developer",
     company: "Glofy LLC",
+    companyUrl: "https://glofy.co/",
     location: "Remote",
     start: "07/2024",
     end: "Present",
@@ -39,6 +40,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Full-Stack Developer",
     company: "Oversoft",
+    companyUrl: "https://oversoft.net/",
     location: "Argentina",
     start: "12/2022",
     end: "06/2024",
@@ -55,6 +57,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Software Engineer",
     company: "Grupo Sancor Seguros",
+    companyUrl: "https://www.sancorseguros.com.ar/",
     location: "Argentina",
     start: "11/2019",
     end: "12/2022",
@@ -72,6 +75,7 @@ export const experience: ExperienceEntry[] = [
   {
     role: "Full-Stack Developer",
     company: "IBM",
+    companyUrl: "https://www.ibm.com/",
     location: "Argentina",
     start: "04/2019",
     end: "11/2019",
