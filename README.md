@@ -9,7 +9,7 @@ database, no cookies, no third-party scripts.
 
 ## Quick start
 
-Requires Node 24 (see `.nvmrc`).
+Requires Node 26 LTS (see `.nvmrc`).
 
 ```bash
 nvm use

@@ -4,7 +4,7 @@
   "private": true,
   "description": "Personal website of David Lescano, Full-Stack Software Engineer in Munich.",
   "engines": {
-    "node": "24.x"
+    "node": "26.x"
   },
   "scripts": {
     "predev": "node scripts/check-node.mjs",
@@ -36,7 +36,7 @@
     "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.65.0",
     "@tailwindcss/postcss": "4.3.5",
-    "@types/node": "24.19.2",
+    "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "eslint": "10.14.0",
@@ -46,5 +46,8 @@
     "tailwindcss": "4.3.5",
     "typescript": "5.9.3",
     "vitest": "5.1.0"
+  },
+  "allowScripts": {
+    "fsevents": false
   }
 }
