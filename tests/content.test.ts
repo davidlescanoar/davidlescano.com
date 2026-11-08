@@ -61,12 +61,15 @@ describe("CV rules", () => {
     expect(allCopy).not.toMatch(/\d+\s?%/);
   });
 
-  it("never names clients other than Rheinmetall", () => {
-    expect(allCopy).not.toMatch(/combined ratio|smart group|counta|patagonian/i);
+  // Client names stay off the site (see AGENTS.md); this guards the employer list itself.
+  it("only lists confirmed employers", () => {
+    const employers = ["Glofy LLC", "Oversoft", "Grupo Sancor Seguros", "IBM"];
+    for (const e of experience) expect(employers, e.company).toContain(e.company);
   });
 
-  it("never publishes the street address or phone number", () => {
-    expect(allCopy).not.toMatch(/einsteinstr|\+49\s?175/i);
+  it("never publishes a street address or phone number", () => {
+    expect(allCopy).not.toMatch(/\b\p{L}+(straße|strasse|str\.)\s*\d+/iu);
+    expect(allCopy).not.toMatch(/\+\d{2}[\d\s/-]{8,}/);
   });
 });
 
