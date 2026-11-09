@@ -3,7 +3,6 @@ import { site } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CopyEmail } from "@/components/ui/CopyEmail";
-import { DraftNote } from "@/components/ui/DraftNote";
 import { GitHubIcon, LinkedInIcon } from "@/components/ui/icons";
 
 export function Contact({ index }: { index: string }) {
@@ -61,11 +60,6 @@ export function Contact({ index }: { index: string }) {
                 </a>
               ))}
             </div>
-            {!site.email ? (
-              <DraftNote className="mt-4">
-                Set email in src/config/site.ts to enable “Get in touch” and “Copy email”.
-              </DraftNote>
-            ) : null}
           </div>
         </div>
       </Container>

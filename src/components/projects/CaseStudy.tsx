@@ -6,7 +6,6 @@ import type { Project } from "@/content/projects";
 import { ProjectLinks } from "@/components/projects/ProjectLinks";
 import { ProjectPreview } from "@/components/projects/ProjectPreview";
 import { Container } from "@/components/ui/Container";
-import { DraftNote } from "@/components/ui/DraftNote";
 import { TagList } from "@/components/ui/Tag";
 import { getCaseStudyProjects } from "@/lib/content";
 import { pad2 } from "@/lib/utils";
@@ -14,7 +13,6 @@ import { pad2 } from "@/lib/utils";
 interface Section {
   id: string;
   title: string;
-  prompt: string;
   render: () => ReactNode | null;
 }
 
@@ -39,25 +37,21 @@ export function CaseStudy({ project, isDraft }: { project: Project; isDraft: boo
     {
       id: "overview",
       title: "Overview",
-      prompt: "What is it, why does it exist, and what problem does it address?",
       render: () => <Paragraphs items={cs.overview} />,
     },
     {
       id: "role",
       title: "My role",
-      prompt: "What you personally built and were responsible for.",
       render: () => <Paragraphs items={cs.role} />,
     },
     {
       id: "architecture",
       title: "Technical architecture",
-      prompt: "Frontend and backend structure, data flow, authentication, and the main technical choices.",
       render: () => <Paragraphs items={cs.architecture} />,
     },
     {
       id: "challenges",
       title: "Challenges & decisions",
-      prompt: "A hard problem, the options you weighed, the trade-offs, and why you chose what you did.",
       render: () =>
         cs.challenges && cs.challenges.length > 0 ? (
           <div className="space-y-6">
@@ -73,8 +67,6 @@ export function CaseStudy({ project, isDraft }: { project: Project; isDraft: boo
     {
       id: "showcase",
       title: "Showcase",
-      prompt:
-        "Real screenshots or diagrams. Add them under /public/projects/<slug>/ and list them in caseStudy.screenshots.",
       render: () =>
         cs.screenshots && cs.screenshots.length > 0 ? (
           <div className="grid gap-5 sm:grid-cols-2">
@@ -100,12 +92,11 @@ export function CaseStudy({ project, isDraft }: { project: Project; isDraft: boo
     {
       id: "lessons",
       title: "Lessons learned",
-      prompt: "What worked, what you would improve, and what you would build differently.",
       render: () => <Paragraphs items={cs.lessons} />,
     },
   ];
 
-  const rendered = sections.map((s) => ({ ...s, content: s.render() })).filter((s) => s.content !== null || isDraft);
+  const rendered = sections.map((s) => ({ ...s, content: s.render() })).filter((s) => s.content !== null);
 
   return (
     <article>
@@ -119,9 +110,9 @@ export function CaseStudy({ project, isDraft }: { project: Project; isDraft: boo
             All projects
           </Link>
           {isDraft ? (
-            <DraftNote className="mb-8 max-w-xl">
-              This case study is a draft. It is not built or linked in production until status is &quot;published&quot;.
-            </DraftNote>
+            <p className="mb-8 w-fit rounded-full border border-dashed border-peach px-3 py-1 font-mono text-xs text-peach-ink">
+              Draft · only visible in npm run dev
+            </p>
           ) : null}
           <div className="grid items-end gap-10 lg:grid-cols-[1fr_1fr]">
             <div>
@@ -169,7 +160,7 @@ export function CaseStudy({ project, isDraft }: { project: Project; isDraft: boo
                 <span className="font-mono text-sm text-accent">{pad2(i + 1)}</span>
                 {s.title}
               </h2>
-              {s.content ?? <DraftNote>To write: {s.prompt}</DraftNote>}
+              {s.content}
             </section>
           ))}
 

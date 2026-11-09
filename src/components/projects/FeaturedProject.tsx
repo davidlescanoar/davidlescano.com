@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { Project } from "@/content/projects";
 import { ProjectLinks } from "@/components/projects/ProjectLinks";
 import { ProjectPreview } from "@/components/projects/ProjectPreview";
-import { DraftNote } from "@/components/ui/DraftNote";
 import { TagList } from "@/components/ui/Tag";
 import { hasCaseStudy } from "@/lib/content";
 import { cn, pad2 } from "@/lib/utils";
@@ -55,9 +54,6 @@ export function FeaturedProject({ project, index }: { project: Project; index: n
         <div className="mt-5">
           <TagList items={project.tech} label={`${project.name} technologies`} />
         </div>
-        {project.tech.length === 0 ? (
-          <DraftNote className="mt-3">Add the real stack in src/content/projects.ts.</DraftNote>
-        ) : null}
         <div className="mt-5 flex flex-wrap items-center gap-x-6">
           {linked ? (
             <Link href={href} className="inline-flex min-h-11 items-center gap-1.5 font-medium text-accent">

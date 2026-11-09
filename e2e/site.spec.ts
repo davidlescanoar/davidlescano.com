@@ -24,13 +24,6 @@ test.describe("home page", () => {
     );
   });
 
-  test("never renders draft placeholders in production", async ({ page }) => {
-    for (const path of ["/", "/about"]) {
-      await page.goto(path);
-      await expect(page.getByText("DRAFT", { exact: true })).toHaveCount(0);
-    }
-  });
-
   test("hides the projects section and route while there are no projects", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#work")).toHaveCount(0);

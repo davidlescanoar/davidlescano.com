@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { site } from "@/config/site";
 import { Container } from "@/components/ui/Container";
-import { showDrafts } from "@/lib/drafts";
 
 export const metadata: Metadata = {
   title: "Impressum",
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
  * then this page returns 404 in production and is not linked.
  */
 export default function ImpressumPage() {
-  if (!site.legal.impressumReady && !showDrafts) notFound();
+  if (!site.legal.impressumReady) notFound();
   return (
     <Container className="max-w-2xl py-16">
       <h1 className="font-display text-4xl font-semibold tracking-tight">Impressum</h1>

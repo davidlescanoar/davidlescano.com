@@ -57,7 +57,8 @@ The content mirrors David's CV, and the same rules apply. Several are enforced b
 - **Static only.** Every route is prerendered. No server-side data fetching, API routes, databases or environment
   secrets.
 - **Empty means hidden.** Sections, nav links and routes appear only when real content exists (see
-  `src/lib/content.ts`). Unfinished case studies stay `status: "draft"`; drafts are never built in production.
+  `src/lib/content.ts`). Unfinished case studies and notes stay `status: "draft"`: visible in `npm run dev`, never
+  built for production.
 - **No third-party scripts, fonts or images.** The CSP allows only this origin. Fonts are self-hosted with `next/font`.
   Vercel Analytics and Speed Insights load from `/_vercel` and are the only tracking.
 - **Use the design tokens** (`bg-surface`, `text-muted`, `text-accent`, `border-line`, ...), never hard-coded colors.

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { site } from "@/config/site";
 import { Container } from "@/components/ui/Container";
-import { showDrafts } from "@/lib/drafts";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung",
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
  * Replace with a reviewed text, then set site.legal.privacyReady = true.
  */
 export default function DatenschutzPage() {
-  if (!site.legal.privacyReady && !showDrafts) notFound();
+  if (!site.legal.privacyReady) notFound();
   return (
     <Container className="max-w-2xl py-16">
       <h1 className="font-display text-4xl font-semibold tracking-tight">Datenschutzerklärung</h1>
