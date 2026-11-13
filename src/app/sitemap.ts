@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/config/site";
-import { getProjects, getPublishedNotes } from "@/lib/content";
+import { getProjects, getNotes, isPublished } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -8,9 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Only published content is indexable, regardless of draft mode.
   const projects = getProjects();
-  const caseStudies = projects.filter((p) => p.status === "published").map((p) => page(`/projects/${p.slug}`));
-  const notes = getPublishedNotes()
-    .filter((n) => n.status === "published")
+  const caseStudies = projects.filter(isPublished).map((p) => page(`/projects/${p.slug}`));
+  const notes = getNotes()
+    .filter(isPublished)
     .map((n) => page(`/writing/${n.slug}`, new Date(`${n.date}T00:00:00Z`)));
 
   return [

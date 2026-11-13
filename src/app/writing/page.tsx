@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { NoteCard } from "@/components/sections/Notes";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { getPublishedNotes } from "@/lib/content";
+import { getNotes } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Notes",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 /** Returns 404 until the first note is published, so there is never an empty blog. */
 export default function WritingPage() {
-  const notes = getPublishedNotes();
+  const notes = getNotes();
   if (notes.length === 0) notFound();
   return (
     <>

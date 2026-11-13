@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { getPublishedNotes } from "@/lib/content";
+import { getNotes } from "@/lib/content";
 import type { Note } from "@/content/writing";
 import { formatDate } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ export function NoteCard({ note }: { note: Note }) {
 
 /** Appears only once at least one note is published. */
 export function Notes({ index }: { index: string }) {
-  const notes = getPublishedNotes().slice(0, 3);
+  const notes = getNotes().slice(0, 3);
   if (notes.length === 0) return null;
   return (
     <section id="notes" aria-labelledby="notes-title" className="py-20 sm:py-28">

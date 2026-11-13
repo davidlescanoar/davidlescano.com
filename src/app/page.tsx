@@ -6,7 +6,7 @@ import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
 import { Hero } from "@/components/sections/Hero";
 import { Notes } from "@/components/sections/Notes";
 import { Skills } from "@/components/sections/Skills";
-import { getFeaturedProjects, getPublishedNotes, hasExperience } from "@/lib/content";
+import { getFeaturedProjects, getNotes, hasExperience } from "@/lib/content";
 import { pad2 } from "@/lib/utils";
 
 /** Person structured data, using only configured, true facts. */
@@ -32,7 +32,7 @@ export default function HomePage() {
     hasExperience() && "experience",
     "skills",
     "about",
-    getPublishedNotes().length > 0 && "notes",
+    getNotes().length > 0 && "notes",
     "contact",
   ].filter(Boolean) as string[];
   const n = (id: string) => pad2(sections.indexOf(id) + 1);
