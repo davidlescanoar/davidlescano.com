@@ -1,12 +1,18 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/config/site";
-import { getProjects, getNotes, isPublished } from "@/lib/content";
+import { getNotes, getProjects, isPublished } from "@/lib/content";
 
+/**
+ * Only published content is indexable, regardless of draft mode. `lastModified`
+ * is set only where a real date exists: a build timestamp on every page would
+ * claim everything changes on each deploy, and search engines ignore that.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const page = (path: string, lastModified = now) => ({ url: `${site.url}${path}`, lastModified });
+  const page = (path: string, lastModified?: Date) => ({
+    url: `${site.url}${path}`,
+    ...(lastModified ? { lastModified } : {}),
+  });
 
-  // Only published content is indexable, regardless of draft mode.
   const projects = getProjects();
   const caseStudies = projects.filter(isPublished).map((p) => page(`/projects/${p.slug}`));
   const notes = getNotes()
