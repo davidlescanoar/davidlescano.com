@@ -2,6 +2,7 @@ import { projects, type Project } from "@/content/projects";
 import { notes, type Note } from "@/content/writing";
 import { experience } from "@/data/experience";
 import { showDrafts } from "@/lib/drafts";
+import { pad2 } from "@/lib/utils";
 
 const byOrder = (a: Project, b: Project) => a.order - b.order;
 
@@ -47,19 +48,38 @@ export function hasExperience(): boolean {
   return experience.length > 0;
 }
 
+export type HomeSectionId = "work" | "experience" | "skills" | "about" | "notes" | "contact";
+
 export interface NavItem {
   label: string;
   href: string;
 }
 
-/** Navigation adapts to what content actually exists. */
+export interface HomeSection extends NavItem {
+  id: HomeSectionId;
+  /** Section number shown in the heading, e.g. "01". */
+  index: string;
+}
+
+const homeSections: (Omit<HomeSection, "index"> & { visible?: () => boolean })[] = [
+  { id: "work", label: "Projects", href: "/#work", visible: () => getFeaturedProjects().length > 0 },
+  { id: "experience", label: "Experience", href: "/#experience", visible: hasExperience },
+  { id: "skills", label: "Skills", href: "/#skills" },
+  { id: "about", label: "About", href: "/about" },
+  { id: "notes", label: "Notes", href: "/writing", visible: () => getNotes().length > 0 },
+  { id: "contact", label: "Contact", href: "/#contact" },
+];
+
+/**
+ * Home page sections that have content, in order. The single source for both
+ * the home page and the navigation, so numbers stay sequential when a section is hidden.
+ */
+export function getHomeSections(): HomeSection[] {
+  return homeSections
+    .filter((s) => s.visible?.() ?? true)
+    .map(({ id, label, href }, i) => ({ id, label, href, index: pad2(i + 1) }));
+}
+
 export function getNavItems(): NavItem[] {
-  const items: NavItem[] = [];
-  if (getFeaturedProjects().length > 0) items.push({ label: "Projects", href: "/#work" });
-  if (hasExperience()) items.push({ label: "Experience", href: "/#experience" });
-  items.push({ label: "Skills", href: "/#skills" });
-  items.push({ label: "About", href: "/about" });
-  if (getNotes().length > 0) items.push({ label: "Notes", href: "/writing" });
-  items.push({ label: "Contact", href: "/#contact" });
-  return items;
+  return getHomeSections().map(({ label, href }) => ({ label, href }));
 }
