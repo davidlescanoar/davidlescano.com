@@ -25,12 +25,6 @@ export interface SiteConfig {
   availability: string | null;
   workAuthorization: string;
   languages: { name: string; level: string }[];
-  legal: {
-    /** Flip to true once the Impressum text has been reviewed. */
-    impressumReady: boolean;
-    /** Flip to true once the privacy policy has been reviewed. */
-    privacyReady: boolean;
-  };
   seo: {
     title: string;
     description: string;
@@ -59,11 +53,6 @@ export const site: SiteConfig = {
     { name: "German", level: "B1, B2 in progress" },
     { name: "Spanish", level: "Native" },
   ],
-
-  legal: {
-    impressumReady: false,
-    privacyReady: false,
-  },
 
   seo: {
     title: "David Lescano | Full-Stack Software Engineer, .NET & React",
