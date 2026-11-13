@@ -8,6 +8,12 @@ export function pad2(n: number): string {
   return String(n).padStart(2, "0");
 }
 
+/** Converts a CV-style month ("07/2024") to the machine-readable form `<time>` expects ("2024-07"). */
+export function isoMonth(monthYear: string): string {
+  const [month, year] = monthYear.split("/");
+  return `${year}-${month}`;
+}
+
 /**
  * Formats an ISO date ("2026-11-15") for display. Parsed as UTC so the day
  * never shifts with the visitor's timezone.

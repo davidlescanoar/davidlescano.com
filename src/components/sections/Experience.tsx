@@ -3,6 +3,7 @@ import { experience } from "@/data/experience";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TagList } from "@/components/ui/Tag";
+import { isoMonth } from "@/lib/utils";
 
 /** Timeline of roles. The home page hides it until src/data/experience.ts has entries. */
 export function Experience({ index }: { index: string }) {
@@ -15,7 +16,8 @@ export function Experience({ index }: { index: string }) {
           {experience.map((job) => (
             <li key={`${job.company}-${job.start}`} className="grid gap-3 md:grid-cols-[200px_1fr] md:gap-10">
               <p className="pt-1 font-mono text-sm text-muted">
-                <time>{job.start}</time> — <time>{job.end}</time>
+                <time dateTime={isoMonth(job.start)}>{job.start}</time> —{" "}
+                {job.end === "Present" ? job.end : <time dateTime={isoMonth(job.end)}>{job.end}</time>}
                 {job.location ? <span className="mt-1 block text-xs">{job.location}</span> : null}
               </p>
               <div className="border-l border-line pl-6 md:border-l-0 md:pl-0">

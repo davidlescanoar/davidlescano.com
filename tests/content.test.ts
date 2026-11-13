@@ -6,7 +6,7 @@ import { projects } from "@/content/projects";
 import { notes } from "@/content/writing";
 import { experience } from "@/data/experience";
 import { skillGroups } from "@/data/skills";
-import { formatDate, pad2 } from "@/lib/utils";
+import { formatDate, isoMonth, pad2 } from "@/lib/utils";
 
 /**
  * Guard rails that keep the public site honest and unbroken.
@@ -155,6 +155,10 @@ describe("utils", () => {
   it("pads section numbers to two digits", () => {
     expect(pad2(1)).toBe("01");
     expect(pad2(12)).toBe("12");
+  });
+
+  it("converts CV months to machine-readable dates", () => {
+    expect(isoMonth("07/2024")).toBe("2024-07");
   });
 
   it("formats dates without shifting the day across timezones", () => {
