@@ -30,7 +30,7 @@ budgets (`lighthouserc.json`).
 | Content helpers (what is visible) | `src/lib/content.ts`                        |
 | Design tokens                     | top of `src/styles/globals.css`             |
 | Security headers (CSP)            | `next.config.ts`                            |
-| Content rules as tests            | `tests/content.test.ts`                     |
+| Content rules as tests            | `tests/content-rules.ts`, `content.test.ts` |
 | End-to-end and accessibility      | `e2e/site.spec.ts`                          |
 | Public CV                         | `public/david-lescano-cv.pdf` (do not edit) |
 
@@ -38,7 +38,8 @@ Routine content updates only touch the content files. Components read from them.
 
 ## Content rules (never break)
 
-The content mirrors David's CV, and the same rules apply. Several are enforced by `tests/content.test.ts`.
+The content mirrors David's CV, and the same rules apply. Several are enforced by `tests/content-rules.ts`, which checks the
+content files and the rendered text of every page.
 
 1. **No invented facts.** Never add employers, projects, technologies, responsibilities, dates or results that David
    hasn't confirmed. If something is missing, leave it out and ask.
