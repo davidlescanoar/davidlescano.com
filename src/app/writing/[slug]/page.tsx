@@ -1,27 +1,27 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
-import { getPublishedNotes } from "@/lib/content";
+import { getNote, getNotes } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
 
 type Params = { slug: string };
 
 export function generateStaticParams(): Params[] {
-  return getPublishedNotes().map((n) => ({ slug: n.slug }));
+  return getNotes().map((n) => ({ slug: n.slug }));
 }
 
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
-  const note = getPublishedNotes().find((n) => n.slug === slug);
+  const note = getNote(slug);
   if (!note) return {};
   return { title: note.title, description: note.summary, alternates: { canonical: `/writing/${note.slug}` } };
 }
 
 export default async function NotePage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const note = getPublishedNotes().find((n) => n.slug === slug);
+  const note = getNote(slug);
   if (!note) notFound();
   return (
     <Container className="max-w-[720px] py-16">
