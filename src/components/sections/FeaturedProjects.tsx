@@ -5,9 +5,9 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { getFeaturedProjects, getProjects } from "@/lib/content";
 
+/** The home page shows it only once a featured project exists. */
 export function FeaturedProjects({ index }: { index: string }) {
   const featured = getFeaturedProjects();
-  if (featured.length === 0) return null;
   const hasMore = getProjects().length > featured.length;
 
   return (

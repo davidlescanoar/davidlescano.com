@@ -4,10 +4,8 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TagList } from "@/components/ui/Tag";
 
-/** Timeline of roles. Hidden until src/data/experience.ts has entries. */
+/** Timeline of roles. The home page hides it until src/data/experience.ts has entries. */
 export function Experience({ index }: { index: string }) {
-  if (experience.length === 0) return null;
-
   return (
     <section id="experience" aria-labelledby="experience-title" className="py-20 sm:py-28">
       <Container>

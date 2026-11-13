@@ -21,10 +21,9 @@ export function NoteCard({ note }: { note: Note }) {
   );
 }
 
-/** Appears only once at least one note is published. */
+/** The home page shows it only once at least one note is published. */
 export function Notes({ index }: { index: string }) {
   const notes = getNotes().slice(0, 3);
-  if (notes.length === 0) return null;
   return (
     <section id="notes" aria-labelledby="notes-title" className="py-20 sm:py-28">
       <Container>
