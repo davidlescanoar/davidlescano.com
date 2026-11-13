@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+import { brokenContentRules } from "../tests/content-rules";
 
 const pages = ["/", "/about", "/does-not-exist"];
 
@@ -95,6 +96,18 @@ test.describe("assets and metadata", () => {
     const xml = await (await request.get("/sitemap.xml")).text();
     expect(xml).toContain("https://davidlescano.com/about");
     expect(xml).not.toContain("/projects");
+  });
+
+  test("every page in the sitemap follows the content rules", async ({ page, request, isMobile }) => {
+    test.skip(isMobile, "the text is the same on mobile");
+    const xml = await (await request.get("/sitemap.xml")).text();
+    const paths = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]!).pathname);
+    expect(paths.length).toBeGreaterThan(0);
+    for (const path of paths) {
+      await page.goto(path);
+      const text = await page.locator("body").innerText();
+      expect(brokenContentRules(text), path).toEqual([]);
+    }
   });
 
   test("shows a friendly 404", async ({ page }) => {

@@ -7,6 +7,7 @@ import { notes } from "@/content/writing";
 import { experience } from "@/data/experience";
 import { skillGroups } from "@/data/skills";
 import { formatDate, isoMonth, pad2 } from "@/lib/utils";
+import { brokenContentRules } from "./content-rules";
 
 /**
  * Guard rails that keep the public site honest and unbroken.
@@ -23,13 +24,31 @@ const isUrl = (value: string) => {
 
 const publicFile = (path: string) => existsSync(join(process.cwd(), "public", path));
 
-/** Every piece of text a visitor can read, for the wording rules below. */
+/**
+ * Text from the content files, drafts included, for the wording rules below.
+ * Copy written in components is covered by the e2e tests, which check every rendered page.
+ */
 const allCopy = [
   site.seo.title,
   site.seo.description,
-  ...experience.flatMap((e) => [e.summary, ...e.highlights]),
-  ...skillGroups.map((g) => g.description),
-  ...projects.flatMap((p) => [p.summary, p.description]),
+  ...site.languages.map((l) => `${l.name} ${l.level}`),
+  ...experience.flatMap((e) => [e.role, e.summary, ...e.highlights]),
+  ...skillGroups.flatMap((g) => [g.title, g.description, ...g.items]),
+  ...projects.flatMap((p) => {
+    const cs = p.caseStudy;
+    return [
+      p.name,
+      p.summary,
+      p.description,
+      ...(cs.overview ?? []),
+      ...(cs.role ?? []),
+      ...(cs.architecture ?? []),
+      ...(cs.challenges ?? []).flatMap((c) => [c.title, c.body]),
+      ...(cs.lessons ?? []),
+      ...[p.cover, ...(cs.screenshots ?? [])].flatMap((s) => (s ? [s.alt, s.caption ?? ""] : [])),
+    ];
+  }),
+  ...notes.flatMap((n) => [n.title, n.summary, ...n.body]),
 ].join("\n");
 
 describe("site config", () => {
@@ -53,23 +72,14 @@ describe("site config", () => {
 });
 
 describe("CV rules", () => {
-  it("never claims a degree", () => {
-    expect(allCopy).not.toMatch(/\b(bachelor|master'?s|degree|thesis|graduated)\b/i);
-  });
-
-  it("never shows achievement percentages", () => {
-    expect(allCopy).not.toMatch(/\d+\s?%/);
+  it("content files follow the wording rules", () => {
+    expect(brokenContentRules(allCopy)).toEqual([]);
   });
 
   // Client names stay off the site (see AGENTS.md); this guards the employer list itself.
   it("only lists confirmed employers", () => {
     const employers = ["Glofy LLC", "Oversoft", "Grupo Sancor Seguros", "IBM"];
     for (const e of experience) expect(employers, e.company).toContain(e.company);
-  });
-
-  it("never publishes a street address or phone number", () => {
-    expect(allCopy).not.toMatch(/\b\p{L}+(straße|strasse|str\.)\s*\d+/iu);
-    expect(allCopy).not.toMatch(/\+\d{2}[\d\s/-]{8,}/);
   });
 });
 
