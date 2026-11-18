@@ -82,8 +82,9 @@ export default function AboutPage() {
 
           <h2 className="pt-8 font-display text-2xl font-semibold tracking-tight">What I&rsquo;m looking for</h2>
           <p className="text-muted">
-            A permanent, English-speaking software engineering role in Munich or elsewhere in Germany: backend,
-            full-stack or cloud. I&rsquo;m a German citizen, so no visa is needed, and I can start immediately.
+            A permanent software engineering role in Germany or elsewhere in Europe: backend, full-stack or cloud. I
+            work in English today and I&rsquo;m learning German (B1, B2 in progress), with the goal of working in German
+            too. As a German citizen I can work anywhere in the EU without a visa, and I can start immediately.
           </p>
 
           <div className="flex flex-wrap gap-x-6 pt-4">

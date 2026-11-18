@@ -13,7 +13,7 @@ test.describe("home page", () => {
   test("shows who David is and how to reach him", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByRole("heading", { level: 1 })).toContainText("David");
-    await expect(page.getByText("German citizen, no visa required").first()).toBeVisible();
+    await expect(page.getByText("German (EU) citizen, no visa required in the EU").first()).toBeVisible();
     await expect(page.getByRole("link", { name: /download cv/i }).first()).toHaveAttribute(
       "href",
       "/david-lescano-cv.pdf",

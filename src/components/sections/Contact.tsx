@@ -32,8 +32,8 @@ export function Contact({ index }: { index: string }) {
               Let&rsquo;s <span className="marker">talk</span>.
             </h2>
             <p className="mt-5 text-lg text-muted">
-              I&rsquo;m open to permanent software engineering roles in Germany. The fastest way to reach me is by
-              email.
+              I&rsquo;m open to permanent software engineering roles in Germany and across Europe. The fastest way to
+              reach me is by email.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">

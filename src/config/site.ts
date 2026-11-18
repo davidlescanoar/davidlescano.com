@@ -47,7 +47,7 @@ export const site: SiteConfig = {
   resumeUrl: "/david-lescano-cv.pdf",
 
   availability: "Available immediately",
-  workAuthorization: "German citizen, no visa required",
+  workAuthorization: "German (EU) citizen, no visa required in the EU",
   languages: [
     { name: "English", level: "C1" },
     { name: "German", level: "B1, B2 in progress" },
