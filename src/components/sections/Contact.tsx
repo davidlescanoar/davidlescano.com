@@ -29,11 +29,11 @@ export function Contact({ index }: { index: string }) {
               id="contact-title"
               className="font-display text-[2.3rem] leading-[1.05] font-semibold tracking-tight text-balance sm:text-6xl"
             >
-              Let&rsquo;s build something <span className="marker">together</span>.
+              Let&rsquo;s <span className="marker">talk</span>.
             </h2>
             <p className="mt-5 text-lg text-muted">
-              I&rsquo;m always interested in meaningful engineering challenges, interesting products, and opportunities
-              to work with great teams.
+              I&rsquo;m open to permanent software engineering roles in Germany. The fastest way to reach me is by
+              email.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">

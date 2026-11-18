@@ -37,7 +37,7 @@ export default function AboutPage() {
         eyebrow="About"
         title={
           <>
-            Software engineer, curious by default, based in <span className="marker">Munich</span>.
+            Full-stack software engineer based in <span className="marker">Munich</span>.
           </>
         }
       />

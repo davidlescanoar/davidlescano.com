@@ -39,7 +39,7 @@ export function AboutTeaser({ index }: { index: string }) {
     <section id="about" aria-labelledby="about-title" className="py-20 sm:py-28">
       <Container className="grid items-center gap-14 md:grid-cols-[1.2fr_1fr]">
         <div>
-          <SectionHeading id="about-title" index={index} label="Person" title="A little about me" />
+          <SectionHeading id="about-title" index={index} label="Person" title="About me" />
           <div className="-mt-4 max-w-xl space-y-4 text-lg text-muted">
             <p>
               I&rsquo;m {site.firstName}, a software engineer based in Munich. I like owning a feature from the database

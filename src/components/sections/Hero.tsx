@@ -26,18 +26,15 @@ export function Hero() {
           </p>
 
           <h1 id="hero-title" className="font-display font-semibold tracking-[-0.035em]">
-            <span className="block text-[3.1rem] leading-[1] sm:text-7xl lg:text-[5rem]">
-              Hey, I&rsquo;m {site.firstName}.
-            </span>
+            <span className="block text-[3.1rem] leading-[1] sm:text-7xl lg:text-[5rem]">I&rsquo;m {site.name}.</span>
             <span className="mt-3 block text-[2.05rem] leading-[1.1] text-muted sm:text-5xl lg:text-[3.4rem]">
               I build software <span className="marker marker-draw whitespace-nowrap text-ink">end to end</span>.
             </span>
           </h1>
 
           <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-muted sm:text-[1.15rem]">
-            Full-stack engineer since 2019, building web applications and backend services with .NET, React and
-            TypeScript: insurance quoting platforms built from scratch, a Blazor-to-React migration, and an analytics
-            dashboard for Rheinmetall.
+            I&rsquo;ve been building web applications with .NET and React since 2019, for insurance, automotive and
+            defence products.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
