@@ -75,7 +75,11 @@ content files and the rendered text of every page.
 
 - **Copy:** English (en-GB dates, e.g. "1 Jan 2026"), short sentences, first person on the site, no buzzwords.
 - **Code:** match the surrounding code. Small components, no comments that restate the code.
-- **Commits:** short, imperative subject line ("Add notes section"), one topic per commit.
+- **Commits:** short, imperative subject line ("Add notes section"), one topic per commit. Authored by David only: no
+  `Co-Authored-By` or other AI attribution.
+- **Keep the repo in sync.** When visible copy or layout changes, search the whole repo, not only `src/`: update
+  `README.md` and the preview screenshots in `.github/assets/` (1280×720 viewport, device scale 1.25, light and dark,
+  JPEG), and check that README claims still hold.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
