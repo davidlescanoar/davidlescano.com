@@ -2,7 +2,7 @@
  * Professional experience, newest first.
  *
  * Keep this in sync with the CV. Same rules: no metrics, no client names
- * except Rheinmetall, no gaps in the timeline.
+ * except Rheinmetall and Ternium, no gaps in the timeline.
  */
 
 export interface ExperienceEntry {
@@ -21,12 +21,26 @@ export interface ExperienceEntry {
 
 export const experience: ExperienceEntry[] = [
   {
+    role: "Software Engineer",
+    company: "Middlesoft",
+    companyUrl: "https://middlesoft.tech",
+    location: "Remote",
+    start: "04/2025",
+    end: "10/2026",
+    summary: "Custom software development company. Client: Ternium, Latin America's leading steel producer.",
+    highlights: [
+      "Built a sales analytics dashboard with filters that dynamically recalculate data and charts.",
+      "Developed the .NET and SQL Server backend and the React and Next.js frontend on Azure.",
+    ],
+    tech: [".NET", "React", "Next.js", "SQL Server", "Azure"],
+  },
+  {
     role: "Full-Stack Developer",
     company: "Glofy LLC",
     companyUrl: "https://glofy.co/",
     location: "Remote",
     start: "07/2024",
-    end: "Present",
+    end: "03/2025",
     summary: "US software consultancy serving insurance, financial-services and defence clients.",
     highlights: [
       "Migrated an insurance web application from Blazor to React and built its new .NET REST API.",
@@ -60,7 +74,7 @@ export const experience: ExperienceEntry[] = [
     companyUrl: "https://www.sancorseguros.com.ar/",
     location: "Argentina",
     start: "11/2019",
-    end: "12/2022",
+    end: "11/2022",
     summary: "One of Argentina's leading insurance groups.",
     highlights: [
       "Built an internal quoting web app for insurance agents (car, home and more) from scratch.",

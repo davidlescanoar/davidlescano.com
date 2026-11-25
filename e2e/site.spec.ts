@@ -18,7 +18,7 @@ test.describe("home page", () => {
       "href",
       "/david-lescano-cv.pdf",
     );
-    await expect(page.locator("#experience")).toContainText("Glofy LLC");
+    await expect(page.locator("#experience")).toContainText("Middlesoft");
     await expect(page.locator("#contact").getByRole("link", { name: /get in touch/i })).toHaveAttribute(
       "href",
       /^mailto:/,

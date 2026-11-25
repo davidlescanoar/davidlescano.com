@@ -33,8 +33,8 @@ export function Hero() {
           </h1>
 
           <p className="mt-7 max-w-[34rem] text-lg leading-relaxed text-muted sm:text-[1.15rem]">
-            I&rsquo;ve been building web applications with .NET and React since 2019, for insurance, automotive and
-            defence products.
+            I&rsquo;ve been building web applications with .NET and React since 2019, for insurance, automotive, defence
+            and steel clients.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">

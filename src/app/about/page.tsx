@@ -56,9 +56,13 @@ export default function AboutPage() {
           </p>
           <p>
             At Oversoft I worked on dealer management software for car dealerships across Latin America and built a
-            reusable React component library. Today, at Glofy, I work with US clients: I migrated an insurance web
-            application from Blazor to React, built its new .NET REST API, and built a full-stack analytics dashboard
-            for Rheinmetall.
+            reusable React component library. At Glofy I worked with US clients: I migrated an insurance web application
+            from Blazor to React, built its new .NET REST API, and built a full-stack analytics dashboard for
+            Rheinmetall.
+          </p>
+          <p>
+            Most recently, at Middlesoft, I built a sales analytics dashboard for Ternium, Latin America&rsquo;s leading
+            steel producer, with a .NET and SQL Server backend and a React and Next.js frontend on Azure.
           </p>
           <p>
             I studied Computer Science at the University of Buenos Aires, where I competed in the ICPC Latin America

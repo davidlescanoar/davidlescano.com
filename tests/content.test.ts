@@ -78,7 +78,7 @@ describe("CV rules", () => {
 
   // Client names stay off the site (see AGENTS.md); this guards the employer list itself.
   it("only lists confirmed employers", () => {
-    const employers = ["Glofy LLC", "Oversoft", "Grupo Sancor Seguros", "IBM"];
+    const employers = ["Middlesoft", "Glofy LLC", "Oversoft", "Grupo Sancor Seguros", "IBM"];
     for (const e of experience) expect(employers, e.company).toContain(e.company);
   });
 });

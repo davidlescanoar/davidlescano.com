@@ -46,8 +46,8 @@ content files and the rendered text of every page.
 2. **No metrics.** No percentages, user counts or speed-ups. The only number allowed is "a team of 4 developers".
 3. **No degree.** Computer Science at the University of Buenos Aires was not completed. Never write "degree",
    "Bachelor", "Master", "graduated" or "thesis".
-4. **Clients stay anonymous.** Rheinmetall is the only client that may be named. Describe other clients by industry,
-   such as "a US insurance technology company".
+4. **Clients stay anonymous.** Rheinmetall and Ternium are the only clients that may be named. Describe other clients
+   by industry, such as "a US insurance technology company".
 5. **No private data.** No street address, no phone number. The public CV deliberately has neither.
 6. **No gaps in the timeline.** Every job stays listed, newest first, with `MM/YYYY` dates.
 7. **Don't inflate.** Rewording is fine; changing scope is not ("contributed to" never becomes "led").
